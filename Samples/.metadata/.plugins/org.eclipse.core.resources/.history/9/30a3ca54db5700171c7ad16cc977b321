@@ -1,0 +1,53 @@
+import java.util.*;
+
+class Node {
+    int val;
+    Node left,right,random;
+
+    Node(int x) {
+        val = x;
+    }
+}
+
+class TestData {
+    public static void main(String args[]) {
+        Node x = new Node(4);
+        x.left = new Node(2);
+        x.right = new Node(6);
+        x.left.left = new Node(1);
+        x.left.right = new Node(3);
+        x.right.left = new Node(5);
+        x.right.right = new Node(7);
+        inorderConstruct(x);
+        while(x.left!=null) {
+            x = x.left;
+        }
+        while(x!=null) {
+            System.out.print(x.val+" ");
+            x = x.random;
+        }
+    }
+
+    public static void inorderConstruct(Node root) {
+        Stack<Node> s = new Stack<Node>();
+        Node current = root;
+        Node prev = null;
+        while(true) {
+            if(current!=null) {
+                s.push(current);
+                current = current.left;
+            }
+            else if(!s.isEmpty()) {
+                current = s.pop();
+                if(prev!=null) {
+                    prev.random = current;
+                }
+                prev = current;
+                current = current.right;
+            }
+            else {
+                break;
+            }
+        }
+    }
+}

@@ -1,0 +1,9 @@
+127.0.0.1 - - [08/Aug/2016:22:04:28 -0400] "GET / HTTP/1.1" 404 951
+0:0:0:0:0:0:0:1 - - [08/Aug/2016:22:04:29 -0400] "GET /RESTfulWebService/ HTTP/1.1" 404 987
+0:0:0:0:0:0:0:1 - - [08/Aug/2016:22:04:48 -0400] "GET /RESTfulWebService/json/product/get HTTP/1.1" 404 1019
+0:0:0:0:0:0:0:1 - - [08/Aug/2016:22:05:22 -0400] "GET /RESTfulWebService/json/product/ HTTP/1.1" 404 1013
+127.0.0.1 - - [08/Aug/2016:22:06:19 -0400] "GET / HTTP/1.1" 404 951
+0:0:0:0:0:0:0:1 - - [08/Aug/2016:22:06:20 -0400] "GET /RESTfulWebService/ HTTP/1.1" 404 987
+0:0:0:0:0:0:0:1 - - [08/Aug/2016:22:06:35 -0400] "GET /RESTfulWebService/json/product/get HTTP/1.1" 404 1019
+127.0.0.1 - - [08/Aug/2016:22:17:54 -0400] "GET / HTTP/1.1" 404 951
+0:0:0:0:0:0:0:1 - - [08/Aug/2016:22:17:55 -0400] "GET /RESTfulWebService/ HTTP/1.1" 404 987

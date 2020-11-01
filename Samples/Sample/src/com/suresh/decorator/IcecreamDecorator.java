@@ -1,0 +1,15 @@
+package com.suresh.decorator;
+
+abstract class IcecreamDecorator implements Icecream {
+
+	protected Icecream specialVanillaIceCream;
+	public IcecreamDecorator(Icecream specialVanillaIceCream) {
+		this.specialVanillaIceCream = specialVanillaIceCream;
+	}
+	@Override
+	public String makeIceCream() {
+		// TODO Auto-generated method stub
+		return specialVanillaIceCream.makeIceCream();
+	}
+
+}

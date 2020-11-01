@@ -1,0 +1,4 @@
+class SampleDemo implements Runnable{
+	private Thread t;
+	private String threadName;
+}

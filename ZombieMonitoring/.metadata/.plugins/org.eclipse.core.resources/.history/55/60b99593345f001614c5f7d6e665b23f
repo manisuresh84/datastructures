@@ -1,0 +1,104 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+ class Pair<S,E> {
+
+	  private final S start;
+	  private final E end;
+
+	  public Pair(S start, E end) {
+	    this.start = start;
+	    this.end = end;
+	  }
+
+	  public S getStart() { return start; }
+	  public E getEnd() { return end; }
+
+	  @Override
+	  public int hashCode() { return start.hashCode() ^ end.hashCode(); }
+
+	  @Override
+	  public boolean equals(Object o) {
+	    if (!(o instanceof Pair)) return false;
+	    Pair pairo = (Pair) o;
+	    return this.start.equals(pairo.getStart()) &&
+	           this.end.equals(pairo.getEnd());
+	  }
+
+	}
+
+public class Answer {
+	static int count;
+	
+	//public static int answer(int[][] intervals) {
+	public static int answer(int [][] intervalArray) {
+		
+		List<Pair<Integer,Integer>> intervals;
+		#if 0 
+		Collections.sort(intervals, new Comparator<Pair<Integer, Integer>>() {
+		    public int compare(final Pair<Integer , Integer> o1, final Pair<Integer, Integer> o2) {
+		    	if (o1.getStart() > o2.getStart()) {
+	                return 1;
+	            } else if (o1.getStart().equals(o2.getStart())) {
+	                return 0; 
+	                          
+	            } else {
+	                return -1;
+	            }
+		    }
+		});
+		
+		for(Pair<Integer, Integer> i : intervals){
+			System.out.println("Values inside Intervals : Start : " + i.getStart() + " End :" + i.getEnd());
+			
+			/*if(i.getEnd() > i.getStart()){
+				
+				//Check whether the start is overlap with other start values
+				
+				//check whether the end is overlap with other end values
+				
+				//check whether the start and end values are subset of other items then ignore it.
+				
+				count += i.getEnd() - i.getStart();
+				
+			}*/
+		}		
+		#endif
+				
+		return count;
+	}
+
+	public static void main(String[] args) {
+		
+/*		List<Pair<Integer,Integer>> intervals = new ArrayList<Pair<Integer,Integer>>();
+		
+		intervals.add(new Pair<Integer, Integer>(1,3));
+		intervals.add(new Pair<Integer, Integer>(3,6));*/
+		
+/*		intervals.add(new Pair<Integer, Integer>(4,5));
+		intervals.add(new Pair<Integer, Integer>(7,9));
+		intervals.add(new Pair<Integer, Integer>(11,13));
+		intervals.add(new Pair<Integer, Integer>(15,17));
+		intervals.add(new Pair<Integer, Integer>(2,3));
+		intervals.add(new Pair<Integer, Integer>(8,12));
+		intervals.add(new Pair<Integer, Integer>(15,19));
+	*/
+			
+/*		ZombieMonitoringDemo zom = new ZombieMonitoringDemo();
+		int result = zom.answer(intervals);
+		System.out.println("Result  :" + result);*/
+		
+		int [][] intervals = new int[2][2];
+		intervals[0][0] = 1;
+		intervals[0][1] = 3;
+		intervals[1][0] = 3;
+		intervals[1][1] = 6;
+		
+		Answer a = new Answer();
+		a.answer(intervals);
+		
+	}
+
+}

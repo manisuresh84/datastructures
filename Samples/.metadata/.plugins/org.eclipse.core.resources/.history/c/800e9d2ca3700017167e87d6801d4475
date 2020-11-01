@@ -1,0 +1,10 @@
+package com.suresh.decorator;
+
+public class ChocolateDecorator extends IcecreamDecorator {
+
+	public ChocolateDecorator(Icecream specialVanillaIceCream) {
+		super(specialVanillaIceCream);
+		// TODO Auto-generated constructor stub
+	}
+
+}

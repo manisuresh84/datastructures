@@ -1,0 +1,57 @@
+public class Solution
+{
+    public int totalScore(String[] blocks, int n)
+    {
+        int total = 0;
+        int numofHitPlus = 0;
+
+        // WRITE YOUR CODE HERE
+        for(int i = 0; i < n; i++){
+           
+            if(isNumber(blocks[i]) == true){
+                total = total + Integer.parseInt(blocks[i]);
+            }
+            else if(blocks[i] == "Z"){
+                System.out.println("total :" + total + "block Z : " + Integer.parseInt(blocks[i - 1]));
+                total = total - Integer.parseInt(blocks[i - 1]);
+            }
+            else if(blocks[i] == "X"){
+                int curScore = -4;
+                total = total - curScore;
+                System.out.println("total :" + total + "block X : " + total);
+            }
+            else if(blocks[i] == "+"){
+                int curScore = 0;
+                if(numofHitPlus == 0){
+                    curScore = 5;
+                    numofHitPlus++;
+                }
+                else if (numofHitPlus == 1){
+                    curScore = 14;
+                }
+                total = total + curScore;
+            }
+        }
+        return total;
+    }
+    public boolean isNumber(String s){
+        
+        boolean ret = false;
+        try{
+            Integer.parseInt(s);
+            ret = true;
+        }
+        catch(NumberFormatException ex){
+            
+        }
+        System.out.println("String [" + s + "] Status [" + ret + "]");
+        return ret;
+        
+    }
+    
+    public static void main(String args[]){
+    	String a[] = {"5", "-2", "4", "Z", "X", "9", "+", "+"};
+    	Solution s = new Solution();
+    	s.totalScore(a, a.length);
+    }
+}

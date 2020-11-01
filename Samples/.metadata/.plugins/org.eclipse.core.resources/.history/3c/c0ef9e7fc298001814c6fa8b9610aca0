@@ -1,0 +1,56 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
+
+public class StackDemo {
+	public static boolean balancedParenthensies(String s) {
+		Stack<Character> stack = new Stack<Character>();
+		for (int i = 0; i < s.length(); i++) {
+			char c = s.charAt(i);
+			if (c == '[' || c == '(' || c == '{') {
+				stack.push(c);
+			} else if (c == ']') {
+				if (stack.isEmpty() || stack.pop() != '[') {
+					return false;
+				}
+			} else if (c == ')') {
+				if (stack.isEmpty() || stack.pop() != '(') {
+					return false;
+				}
+			} else if (c == '}') {
+				if (stack.isEmpty() || stack.pop() != '{') {
+					return false;
+				}
+			}
+
+		}
+
+		return stack.isEmpty();
+	}
+
+	String[] braces(String[] values) {
+		List<String> out = new ArrayList<String>();
+		for (String element : values) {
+			boolean b = balancedParenthensies(element);
+			if (b == true) {
+				out.add("YES");
+			} else {
+				out.add("NO");
+			}
+		}
+		return values;
+	}
+
+	public static void main(String[] args) {
+		StackDemo st = new StackDemo();
+		String[] in = new String[]();
+		in.add("{{}}");
+		in.add("{[}]");
+		in.add("()[]{}");
+		st.braces(in);
+		System.out.println(balancedParenthensies("{(a,b)}"));
+		System.out.println(balancedParenthensies("{(a},b)"));
+		System.out.println(balancedParenthensies("{)(a,b}"));
+	}
+
+}

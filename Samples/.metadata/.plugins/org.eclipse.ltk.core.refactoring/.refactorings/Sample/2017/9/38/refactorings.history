@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;KMLSearch.java&apos; to &apos;KMP_String_Matching.java&apos;&#x0D;&#x0A;- Original project: &apos;Sample&apos;&#x0D;&#x0A;- Original element: &apos;KMLSearch.java&apos;&#x0D;&#x0A;- Renamed element: &apos;KMP_String_Matching.java&apos;" description="Rename compilation unit &apos;KMLSearch.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src&lt;{KMLSearch.java" name="KMP_String_Matching.java" references="false" stamp="1505777547948" version="1.0"/>
+</session>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;HttpJsonFile.html&apos; to &apos;WEB-INF&apos;&#x0D;&#x0A;- Original project: &apos;Client&apos;&#x0D;&#x0A;- Destination element: &apos;WEB-INF&apos;&#x0D;&#x0A;- Original element: &apos;HttpJsonFile.html&apos;" description="Copy file" element1="WebContent/WEB-INF/HttpJsonFile.html" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1470450734030" target="/MyServer/WebContent/WEB-INF" units="0" version="1.0"/>
+</session>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="javax.ws.rs.Path"/>
+<fullyQualifiedTypeName name="javax.ws.rs.PUT"/>
+<fullyQualifiedTypeName name="javax.ws.rs.GET"/>
+<fullyQualifiedTypeName name="javax.ws.rs.POST"/>
+<fullyQualifiedTypeName name="javax.ws.rs.DELETE"/>
+<fullyQualifiedTypeName name="com.sun.research.ws.wadl.Application"/>
+<fullyQualifiedTypeName name="javax.ws.rs.core.Application"/>
+<fullyQualifiedTypeName name="java.util.Set"/>
+<fullyQualifiedTypeName name="java.util.HashSet"/>
+<fullyQualifiedTypeName name="java.lang.Class"/>
+<fullyQualifiedTypeName name="com.service.user.UserServices"/>
+<fullyQualifiedTypeName name="com.sun.jersey.api.client.Client"/>
+<fullyQualifiedTypeName name="com.sun.jersey.api.client.WebResource"/>
+<fullyQualifiedTypeName name="com.sun.jersey.api.client.ClientResponse"/>
+<fullyQualifiedTypeName name="com.sun.jersey.api.client.ClientRequest"/>
+<fullyQualifiedTypeName name="javax.ws.rs.core.Context"/>
+<fullyQualifiedTypeName name="javax.ws.rs.core.HttpHeaders"/>
+<fullyQualifiedTypeName name="javax.ws.rs.core.MultivaluedMap"/>
+<fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="javax.swing.JComboBox.KeySelectionManager"/>
+<fullyQualifiedTypeName name="javax.ws.rs.Consumes"/>
+<fullyQualifiedTypeName name="javax.ws.rs.Produces"/>
+<fullyQualifiedTypeName name="com.sun.jersey.core.header.FormDataContentDisposition"/>
+<fullyQualifiedTypeName name="java.io.InputStream"/>
+<fullyQualifiedTypeName name="java.io.FileOutputStream"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="javax.ws.rs.core.GenericEntity"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="javax.ws.rs.core.Response"/>
+<fullyQualifiedTypeName name="javax.ws.rs.core.MediaType"/>
+<fullyQualifiedTypeName name="com.sun.jersey.api.client.filter.HTTPBasicAuthFilter"/>
+<fullyQualifiedTypeName name="com.sun.jersey.api.client.config.DefaultClientConfig"/>
+<fullyQualifiedTypeName name="com.sun.jersey.client.urlconnection.HTTPSProperties"/>
+<fullyQualifiedTypeName name="javax.net.ssl.SSLContext"/>
+<fullyQualifiedTypeName name="javax.net.ssl.TrustManager"/>
+<fullyQualifiedTypeName name="com.client.ServerTrustManager"/>
+</qualifiedTypeNameHistroy>

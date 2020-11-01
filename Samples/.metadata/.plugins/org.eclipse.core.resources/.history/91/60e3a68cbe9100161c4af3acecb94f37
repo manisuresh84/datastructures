@@ -1,0 +1,56 @@
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+
+public class ApolloSmiFilter {
+
+	public static void main(String[] args) throws IOException {
+
+		ArrayList<String> list = new ArrayList<String>();
+		int i = 0 ;
+		for (String line : Files.readAllLines(Paths
+				.get("C:\\Users\\manisx\\Documents\\Retrieval\\Apollo Update\\ReliabilityIssue\\test\\sep11_Oct11_2016.txt"))) {
+
+			int sourcePos = line.indexOf("source:");
+			int attachPos = line.indexOf("attach:");
+			
+			System.out.println("Source Pos : " + sourcePos + "  AttachPos  :" + attachPos);
+			if(sourcePos!= -1 && attachPos != -1){
+				list.add(line.substring(sourcePos + 7, attachPos).trim());
+			}
+			System.out.println("Line No :" + ++i);
+
+		}
+
+		Set<String> set = new HashSet<String>(list);
+
+		for (String temp : set) {
+			System.out.println(temp + ": " + Collections.frequency(list, temp));
+		}
+
+		FileWriter writer = new FileWriter(
+				"C:\\Users\\manisx\\Documents\\Retrieval\\Apollo Update\\ReliabilityIssue\\10_3\\output.txt");
+
+		Iterator<String> iterator = list.iterator();
+
+		while (iterator.hasNext()) {
+			writer.write(iterator.next().toString());
+			writer.write("\n");
+		}
+
+		writer.write("\n\nConsolidation Report :\n");
+		for (String temp : set) {
+			writer.write(temp + ": " + Collections.frequency(list, temp));
+			writer.write("\n");
+			System.out.println(temp + ": " + Collections.frequency(list, temp));
+		}
+		writer.flush();
+		writer.close();
+	}
+}

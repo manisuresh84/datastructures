@@ -1,0 +1,21 @@
+import java.util.Stack;
+
+public class StackDemo {
+	String[] braces(String[] values){
+		Stack<Char> stack = new Stack<Char>();
+		for (String element : values) {
+			for(int i =0; i< element.length();i++){
+				if(element.charAt(i) == '['){
+					stack.push(element.charAt(i));
+				}
+			}
+		}
+		return values;
+		
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

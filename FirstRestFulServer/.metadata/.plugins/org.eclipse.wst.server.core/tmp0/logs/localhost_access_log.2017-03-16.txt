@@ -1,0 +1,10 @@
+127.0.0.1 - - [16/Mar/2017:12:01:05 -0400] "GET / HTTP/1.1" 404 951
+0:0:0:0:0:0:0:1 - - [16/Mar/2017:12:01:07 -0400] "GET /RESTfulWebService/ HTTP/1.1" 404 987
+0:0:0:0:0:0:0:1 - - [16/Mar/2017:12:01:32 -0400] "GET / HTTP/1.1" 404 951
+0:0:0:0:0:0:0:1 - - [16/Mar/2017:12:02:26 -0400] "GET /RESTfulClient/ HTTP/1.1" 404 979
+0:0:0:0:0:0:0:1 - - [16/Mar/2017:12:02:43 -0400] "GET /RESTfulClient/Restclient.jsp HTTP/1.1" 200 772
+0:0:0:0:0:0:0:1 - - [16/Mar/2017:12:02:58 -0400] "POST /RESTfulClient/ClientServlet HTTP/1.1" 500 4608
+0:0:0:0:0:0:0:1 - - [16/Mar/2017:12:03:15 -0400] "GET / HTTP/1.1" 404 951
+0:0:0:0:0:0:0:1 - - [16/Mar/2017:12:08:06 -0400] "GET /ClientProject/ HTTP/1.1" 404 979
+0:0:0:0:0:0:0:1 - - [16/Mar/2017:12:08:18 -0400] "GET /ClientProject/client.jsp HTTP/1.1" 200 982
+0:0:0:0:0:0:0:1 - - [16/Mar/2017:12:08:26 -0400] "POST /RESTfulWebService/backend/user/service HTTP/1.1" 405 -

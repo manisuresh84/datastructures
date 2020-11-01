@@ -1,0 +1,26 @@
+public class B{
+	public int countClumps(int[] nums) {
+		  boolean inclump = false;
+		  int clumpcnt = 0;
+		  // note the start-from-1 loop
+		  for (int i = 1; i < nums.length; i++) {
+		      if (nums[i] == nums[i - 1]) {
+		          // we are in a clump
+		          if (!inclump) {
+		              // this is the first time for this clump.
+		              inclump = true;
+		              clumpcnt++;
+		          }
+		      } else {
+		          inclump = false;
+		      }
+		  }
+		  return clumpcnt;
+		}
+	public static void main(String arg[]){
+		B obj = new B();
+		int nums[] = {5,5,8, 2, 2, 3, 4, 4,6,6,8,8};
+		System.out.println(obj.countClumps(nums));
+	}
+	
+}

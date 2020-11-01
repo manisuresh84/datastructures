@@ -1,0 +1,11 @@
+package com.suresh.interpreter;
+
+public class DayExpression extends AbstractExpression {
+
+	@Override
+	public void evaluate(Context context) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="com.suresh.abstractfactorypattern.Rectangle"/>
+<fullyQualifiedTypeName name="com.suresh.abstractfactorypattern.Square"/>
+<fullyQualifiedTypeName name="com.suresh.abstractfactorypattern.ShapeFactory"/>
+<fullyQualifiedTypeName name="com.suresh.abstractfactorypattern.AbstractFactory"/>
+<fullyQualifiedTypeName name="com.suresh.singletonpattern.SingleObject"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+</qualifiedTypeNameHistroy>

@@ -1,0 +1,24 @@
+
+public class Answer {
+
+	public static int answer(int [][] intervals){
+	
+		
+		
+		for(int i =0 ; i < intervals.length; i++){
+			for(int j = 0 ; j < intervals.length; j++){
+				System.out.print(intervals[i][j]);
+			}
+			System.out.println();
+		}
+		
+		return 1;
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int [][] intervals = new int[5][];
+		Answer a = new Answer();
+		a.answer(intervals);
+	}
+
+}

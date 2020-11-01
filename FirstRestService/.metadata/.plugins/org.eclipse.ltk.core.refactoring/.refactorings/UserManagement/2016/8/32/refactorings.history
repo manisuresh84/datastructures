@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;UserManagement/WebContent/WEB-INF/Web.xml&apos; to &apos;web.xml&apos;" description="Rename resource &apos;Web.xml&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="WebContent/WEB-INF/Web.xml" name="web.xml" stamp="1470193509434" updateReferences="true"/>
+</session>

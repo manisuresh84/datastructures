@@ -1,0 +1,8 @@
+AUTO=line-level
+BINARY=Auto-detect
+EXPAND=Yes
+REPLACE=Ask
+RESERVE=No
+UNCHANGEFILE=undo Check out
+VCT=SCCS
+eclipse.preferences.version=1

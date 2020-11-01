@@ -1,0 +1,15 @@
+import java.util.PriorityQueue;
+
+public class B{
+	public static void main(String arg[]){
+		PriorityQueue tDo = new PriorityQueue<>();
+		tDo.add("Dishes");
+		tDo.add("laundry");
+		tDo.add("bills");
+		tDo.offer("bills");
+		System.out.println(tDo.size() + " " + tDo.poll());
+		System.out.println(" " + tDo.peek() + " " + tDo.poll());
+		System.out.println("" + tDo.poll() + " " + tDo.poll());
+	}
+	
+}

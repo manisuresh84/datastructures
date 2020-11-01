@@ -1,0 +1,3 @@
+INDEX VERSION 1.129+C:\Users\manisx\Documents\Technical\Java\Examples\FirstAngularEx\.metadata\.plugins\org.eclipse.jdt.core
+137624701.index
+1426363755.index

@@ -1,0 +1,75 @@
+import java.util.ArrayList;
+import java.util.List;
+
+ class Pair<S,E> {
+
+	  private final S start;
+	  private final E end;
+
+	  public Pair(S start, E end) {
+	    this.start = start;
+	    this.end = end;
+	  }
+
+	  public S getStart() { return start; }
+	  public E getEnd() { return end; }
+
+	  @Override
+	  public int hashCode() { return start.hashCode() ^ end.hashCode(); }
+
+	  @Override
+	  public boolean equals(Object o) {
+	    if (!(o instanceof Pair)) return false;
+	    Pair pairo = (Pair) o;
+	    return this.start.equals(pairo.getStart()) &&
+	           this.end.equals(pairo.getEnd());
+	  }
+
+	}
+
+public class ZombieMonitoringDemo implements Comparator {
+	static int count = 0;
+	
+	public static int answer(List<Pair<Integer,Integer>> intervals) {
+		
+		for(Pair<Integer, Integer> i : intervals){
+			System.out.println("Values inside Intervals : Start : " + i.getStart() + " End :" + i.getEnd());
+			
+			if(i.getEnd() > i.getStart()){
+				
+				//Check whether the start is overlap with other start values
+				
+				//check whether the end is overlap with other end values
+				
+				//check whether the start and end values are subset of other items then ignore it.
+				
+				count += i.getEnd() - i.getStart();
+				
+			}
+		}			
+				
+		return count;
+	}
+
+	public static void main(String[] args) {
+		
+		List<Pair<Integer,Integer>> intervals = new ArrayList<Pair<Integer,Integer>>();
+		
+		intervals.add(new Pair<Integer, Integer>(1,3));
+		intervals.add(new Pair<Integer, Integer>(3,6));
+/*		intervals.add(new Pair<Integer, Integer>(4,5));
+		intervals.add(new Pair<Integer, Integer>(7,9));
+		intervals.add(new Pair<Integer, Integer>(11,13));
+		intervals.add(new Pair<Integer, Integer>(15,17));
+		intervals.add(new Pair<Integer, Integer>(2,3));
+		intervals.add(new Pair<Integer, Integer>(8,12));
+		intervals.add(new Pair<Integer, Integer>(15,19));*/
+		
+		
+		ZombieMonitoringDemo zom = new ZombieMonitoringDemo();
+		int result = zom.answer(intervals);
+		System.out.println("Result  :" + result);
+		
+	}
+
+}

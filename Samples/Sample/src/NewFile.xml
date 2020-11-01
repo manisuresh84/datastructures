@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<query>
+	<q name="Original Search" originalsearch="true">animals</q>
+	<dwim>true</dwim>
+	<qlang>NaturalAnd</qlang>
+	<parsealgorithm>false</parsealgorithm>
+	<highlight>true</highlight>
+	<suggestcorrections>true</suggestcorrections>
+	<autocorrection>true</autocorrection>
+	<fuzzymatch>false</fuzzymatch>
+	<suggestioncount>1</suggestioncount>
+	<equivs>true</equivs>
+	<synonyms>false</synonyms>
+	<termunitparse>token</termunitparse>
+</query>

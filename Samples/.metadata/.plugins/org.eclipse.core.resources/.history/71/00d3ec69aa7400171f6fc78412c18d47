@@ -1,0 +1,467 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+import java.util.Stack;
+
+public class PreorderToTree {
+	public int pIndex = 0;
+
+	public Node constructTree(int[] preorder, int data, int min, int max) {
+		System.out.println("First Index Val [" + data + "] Min [" + min + "] Max [" + max + "]");
+		if (pIndex < preorder.length) {
+			if (preorder[pIndex] > min && preorder[pIndex] < max) {
+				Node root = new Node(data);
+				pIndex++;
+				if (pIndex < preorder.length) {
+					// nodes lies between min and data will create left subtree
+					root.left = constructTree(preorder, preorder[pIndex], min, data);
+					// nodes lies between data and max will create right subtree
+					root.right = constructTree(preorder, preorder[pIndex], data, max);
+				}
+				return root;
+			} else {
+				System.out.println("Array Element [" + preorder[pIndex] + "] is not within range condition Min [" + min
+						+ "] Max [" + max + "]!!");
+			}
+		}
+		return null;
+	}
+
+	public void displayPreOrderTree(Node root) {
+		if (root != null) {
+			Stack<Node> s = new Stack<Node>();
+			s.push(root);
+
+			while (!s.isEmpty()) {
+				Node temp = s.pop();
+				System.out.print(temp.data + " ");
+
+				if (temp.right != null) {
+					s.push(temp.right);
+				}
+
+				if (temp.left != null) {
+					s.push(temp.left);
+				}
+
+			}
+		}
+	}
+
+	public void displayInOrderWithRecursion(Node root) {
+		if (root != null) {
+			displayInOrderWithRecursion(root.left);
+			System.out.print(root.data + " ");
+			displayInOrderWithRecursion(root.right);
+		}
+	}
+
+	public void displayPreOrderWithRecursion(Node root) {
+		if (root != null) {
+			System.out.print(root.data + " ");
+			displayPreOrderWithRecursion(root.left);
+			displayPreOrderWithRecursion(root.right);
+		}
+	}
+
+	public void displayPostOrderWithRecursion(Node root) {
+		if (root != null) {
+			displayPostOrderWithRecursion(root.left);
+			displayPostOrderWithRecursion(root.right);
+			System.out.print(root.data + " ");
+		}
+	}
+
+	public void displayInOrderTree(Node root) {
+		Stack<Node> s = new Stack<Node>();
+		while (true) {
+			if (root != null) {
+				s.push(root);
+				root = root.left;
+			} else {
+				if (!s.isEmpty()) {
+					Node temp = s.pop();
+					System.out.print(temp.data + " ");
+					root = temp.right;
+				} else {
+					break;
+				}
+			}
+		}
+
+	}
+
+	public void displayLevelOrder(Node root) {
+		Queue<Node> q = new LinkedList<Node>();
+		q.add(root);
+		while (!q.isEmpty()) {
+			Node temp = q.poll();
+			System.out.print(temp.data + " ");
+			if (temp.left != null) {
+				q.add(temp.left);
+			}
+
+			if (temp.right != null) {
+				q.add(temp.right);
+			}
+		}
+	}
+
+	public void displayPostOrderTree(Node root) {
+		if (root != null) {
+			Stack<Node> s1 = new Stack<Node>();
+			Stack<Node> s2 = new Stack<Node>();
+			s1.push(root);
+
+			while (!s1.isEmpty()) {
+				Node temp = s1.pop();
+				s2.push(temp);
+				if (temp.left != null) {
+					s1.push(temp.left);
+				}
+
+				if (temp.right != null) {
+					s1.push(temp.right);
+				}
+
+			}
+
+			while (!s2.isEmpty()) {
+				Node temp = s2.pop();
+
+				System.out.print(temp.data + " ");
+			}
+		}
+	}
+
+	public void displayGivenLevel(Node root, int level) {
+		// System.out.println("Level Val [" + level + "]\n");
+		if (root == null) {
+			return;
+		} else if (level == 1) {
+			System.out.print(root.data + " ");
+		} else if (level > 1) {
+			displayGivenLevel(root.left, level - 1);
+			displayGivenLevel(root.right, level - 1);
+		}
+	}
+
+	public int height(Node node) {
+		if (node == null)
+			return 0;
+		else {
+			/* compute the height of each subtree */
+			int lheight = height(node.left);
+			int rheight = height(node.right);
+
+			// System.out.println("\nNode Data [" + node.data + "] lheight [" +
+			// lheight + "] rheight [" + rheight + "]");
+			/* use the larger one */
+			if (lheight > rheight) {
+				// System.out.println("Max Left Height");
+				return (lheight + 1);
+			} else {
+				// System.out.println("Max Right Height");
+				return (rheight + 1);
+			}
+		}
+	}
+	
+	public int heightWithoutRecursion(Node root) {
+		if (root == null) {
+			return 0;
+		}
+
+		Queue<Node> q = new LinkedList<Node>();
+		q.add(root);
+		int height = 0;
+
+		while (true) {
+			int nodeCount = q.size();
+
+			if (nodeCount == 0)
+				return height;
+			height++;
+			while (nodeCount > 0) {
+				Node temp = q.peek();
+				q.remove();
+				if (temp.left != null)
+					q.add(temp.left);
+
+				if (temp.right != null)
+					q.add(temp.right);
+				nodeCount--;
+			}
+		}
+	}
+
+	public int sizeOfTreeWithRecursion(Node root) {
+		if (root == null)
+			return 0;
+		else
+			return (sizeOfTreeWithRecursion(root.left) + 1 + sizeOfTreeWithRecursion(root.right));
+	}
+
+	public int sizeOfTreeWithoutRecursion(Node root) {
+		if (root == null) {
+			return 0;
+		}
+
+		Queue<Node> q = new LinkedList<Node>();
+		int count = 0;
+		q.add(root);
+		count++;
+
+		while (!q.isEmpty()) {
+			Node temp = q.poll();
+			if (temp.left != null) {
+				q.add(temp.left);
+				count++;
+			}
+			if (temp.right != null) {
+				q.add(temp.right);
+				count++;
+			}
+		}
+
+		return count;
+	}
+
+	public void reverseLevelOrder(Node root) {
+
+		if (root != null) {
+			int height = height(root);
+
+			for (int i = height; i > 0; i--) {
+				displayGivenLevel(root, i);
+			}
+		}
+	}
+
+	public void reverserLevelOrderWithoutRecursion(Node root) {
+		Stack<Node> s = new Stack<Node>();
+		Queue<Node> q = new LinkedList<Node>();
+
+		if (root == null)
+			return;
+
+		q.add(root);
+
+		while (!q.isEmpty()) {
+			Node temp = q.poll();
+			s.push(temp);
+
+			if (temp.right != null)
+				q.add(temp.right);
+
+			if (temp.left != null)
+				q.add(temp.left);
+		}
+
+		while (!s.isEmpty()) {
+			Node temp = s.pop();
+			System.out.print(temp.data + " ");
+		}
+	}
+
+	public void deleteTreeWithoutRecursion(Node node){
+		if(node == null){
+			return;
+		}
+		
+		Queue<Node> q = new LinkedList<Node>();
+		q.add(node);
+		
+		while(!q.isEmpty()){
+			Node temp = q.poll();
+			
+			if(temp.left != null)
+				q.add(temp.left);
+			
+			if(temp.right != null)
+				q.add(temp.right);
+			
+			node = null;
+		}
+	}
+	
+	public void deleteTree(Node root) {
+		if (root != null) {
+			deleteTree(root.left);
+			deleteTree(root.right);
+			System.out.print("\nDelted Node [" + root.data + "]");
+			root = null;
+		}
+	}
+
+	/*
+	 * Wrapper function that deletes the tree and sets root node as null
+	 */
+	void deleteTreeRef(Node nodeRef) {
+		System.out.println("\nSize of given Tree before delete     : " + sizeOfTreeWithRecursion(nodeRef));
+		deleteTree(nodeRef);
+		nodeRef = null;
+		
+		System.out.println("\nSize of given Tree after delete      : " + sizeOfTreeWithRecursion(nodeRef));
+	}
+
+	public static void main(String args[]) {
+		PreorderToTree p = new PreorderToTree();
+		int[] preOrder = { 20, 10, 5, 1, 7, 15, 30, 25, 35, 32, 40 };
+
+		/* int[] preOrder = { 1, 2, 4, 5, 3 }; */
+		/* int[] preOrder = { 20, 10, 9, 15, 30, 24, 23, 29, 35, 40 }; */
+
+		for (int i = 0; i < preOrder.length; i++) {
+			System.out.print(preOrder[i] + " ");
+		}
+
+		System.out.println();
+
+		System.out
+				.println("Integer.MIN_VALUE [" + Integer.MIN_VALUE + "] Integer.MAX_VALUE [" + Integer.MAX_VALUE + "]");
+		Node root = p.constructTree(preOrder, preOrder[0], Integer.MIN_VALUE, Integer.MAX_VALUE);
+		System.out.println("Constructed Tree:\n");
+
+		BTreePrinter.printNode(root);
+
+		System.out.println("\nPre Order Traversal of Constructed Tree With Recursion : ");
+		p.displayPreOrderWithRecursion(root);
+
+		System.out.println("\nPre Order Traversal of Constructed Tree Without Recursion : ");
+		p.displayPreOrderTree(root);
+
+		System.out.println("\nPost Order Traversal of Constructed Tree With Recursion : ");
+		p.displayPostOrderWithRecursion(root);
+
+		System.out.println("\nPost Order Traversal of Constructed Tree Without Recursion : ");
+		p.displayPostOrderTree(root);
+
+		System.out.println("\nIn Order Traversal of Constructed Tree With Recursion : ");
+		p.displayInOrderWithRecursion(root);
+
+		System.out.println("\nIn Order Traversal of Constructed Tree Without Recursion : ");
+		p.displayInOrderTree(root);
+
+		System.out.println("\nBreath First Traversal of Constructed Tree Without Recursion :");
+		p.displayLevelOrder(root);
+
+		System.out.println("Height of Root : " + p.height(root));
+		System.out.println("Height Of Root Without Recursion :" + p.heightWithoutRecursion(root));
+
+		System.out.println("\nReverse Level Order with Recursion :");
+		p.reverseLevelOrder(root);
+
+		System.out.println("\nReverse Level Order Without Recursion :");
+		p.reverserLevelOrderWithoutRecursion(root);
+
+		System.out.println("\nSize of given Tree with recursion    : " + p.sizeOfTreeWithRecursion(root));
+		System.out.println("\nSize of given Tree without recursion :" + p.sizeOfTreeWithoutRecursion(root));
+
+		System.out.println("\nDelete given Tree :");
+		p.deleteTreeRef(root);
+
+		
+
+	}
+}
+
+class Node {
+	int data;
+	Node left;
+	Node right;
+
+	public Node(int data) {
+		this.data = data;
+	}
+}
+
+class BTreePrinter {
+
+	public static <T extends Comparable<?>> void printNode(Node root) {
+		int maxLevel = BTreePrinter.maxLevel(root);
+
+		printNodeInternal(Collections.singletonList(root), 1, maxLevel);
+	}
+
+	private static <T extends Comparable<?>> void printNodeInternal(List<Node> nodes, int level, int maxLevel) {
+		if (nodes.isEmpty() || BTreePrinter.isAllElementsNull(nodes))
+			return;
+
+		int floor = maxLevel - level;
+		int endgeLines = (int) Math.pow(2, (Math.max(floor - 1, 0)));
+		int firstSpaces = (int) Math.pow(2, (floor)) - 1;
+		int betweenSpaces = (int) Math.pow(2, (floor + 1)) - 1;
+
+		BTreePrinter.printWhitespaces(firstSpaces);
+
+		List<Node> newNodes = new ArrayList<Node>();
+		for (Node node : nodes) {
+			if (node != null) {
+				System.out.print(node.data);
+				newNodes.add(node.left);
+				newNodes.add(node.right);
+			} else {
+				newNodes.add(null);
+				newNodes.add(null);
+				System.out.print(" ");
+			}
+
+			BTreePrinter.printWhitespaces(betweenSpaces);
+		}
+		System.out.println("");
+
+		for (int i = 1; i <= endgeLines; i++) {
+			for (int j = 0; j < nodes.size(); j++) {
+				BTreePrinter.printWhitespaces(firstSpaces - i);
+				if (nodes.get(j) == null) {
+					BTreePrinter.printWhitespaces(endgeLines + endgeLines + i + 1);
+					continue;
+				}
+
+				if (nodes.get(j).left != null)
+					System.out.print("/");
+				else
+					BTreePrinter.printWhitespaces(1);
+
+				BTreePrinter.printWhitespaces(i + i - 1);
+
+				if (nodes.get(j).right != null)
+					System.out.print("\\");
+				else
+					BTreePrinter.printWhitespaces(1);
+
+				BTreePrinter.printWhitespaces(endgeLines + endgeLines - i);
+			}
+
+			System.out.println("");
+		}
+
+		printNodeInternal(newNodes, level + 1, maxLevel);
+	}
+
+	private static void printWhitespaces(int count) {
+		for (int i = 0; i < count; i++)
+			System.out.print(" ");
+	}
+
+	private static <T extends Comparable<?>> int maxLevel(Node node) {
+		if (node == null)
+			return 0;
+
+		return Math.max(BTreePrinter.maxLevel(node.left), BTreePrinter.maxLevel(node.right)) + 1;
+	}
+
+	private static <T> boolean isAllElementsNull(List list) {
+		for (Object object : list) {
+			if (object != null)
+				return false;
+		}
+
+		return true;
+	}
+
+}

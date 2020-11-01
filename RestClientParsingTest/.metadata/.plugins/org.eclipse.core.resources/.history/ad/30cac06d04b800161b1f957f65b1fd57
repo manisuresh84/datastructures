@@ -1,0 +1,22 @@
+/**
+ * 
+ */
+/**
+ * @author manisx
+ *
+ */
+
+@XmlSchema(
+    namespace="http://www.w3.org/2005/Atom",
+    elementFormDefault = XmlNsForm.QUALIFIED,
+    xmlns={
+       @XmlNs(prefix="atom", namespaceURI="http://www.w3.org/2005/Atom"), 
+       @XmlNs(prefix="lnatom", namespaceURI="http://services.lexisnexis.com/shared/xmlschema/documentlist/1/")
+   }
+)
+
+package wam;
+import javax.xml.bind.annotation.XmlNs;
+import javax.xml.bind.annotation.XmlNsForm;
+import javax.xml.bind.annotation.XmlSchema;
+

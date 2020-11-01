@@ -1,0 +1,72 @@
+import java.io.IOException;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.TreeMap;
+
+public class ApolloSmiFilter {
+
+	public static void main(String[] args) throws IOException {
+
+		//Get all the Source Owner Details into Hashmap, Key is SMI & Value is Source Owner team name.
+		
+		 Map<String, String> map = new HashMap<String, String>();
+	        BufferedReader in = new BufferedReader(new FileReader(Paths.get("C:\\Users\\manisx\Documents\\Retrieval\\Apollo Update\\ReliabilityIssue\\sourceOwners.txt")));
+	        String line1 = "";
+	        while ((line1 = in.readLine()) != null) {
+	            String parts[] = line1.split("\t");
+	            map.put(parts[0], parts[1]);
+	        }
+	        in.close();
+	        
+	        System.out.println(map.toString());
+		
+/*		ArrayList<String> list = new ArrayList<String>();
+		int i = 0 ;
+		for (String line : Files.readAllLines(Paths
+				.get("C:\\Users\\manisx\\Documents\\Retrieval\\Apollo Update\\ReliabilityIssue\\test\\sep11_Oct11_2016.txt"))) {
+
+			int sourcePos = line.indexOf("source:");
+			int attachPos = line.indexOf("attach:");
+			
+			//System.out.println("Source Pos : " + sourcePos + "  AttachPos  :" + attachPos);
+			if(sourcePos!= -1 && attachPos != -1){
+				list.add(line.substring(sourcePos + 7, attachPos).trim());
+				//System.out.println("Out : " + line.substring(sourcePos + 7, attachPos).trim()); 
+			}
+			System.out.println("Line No :" + ++i);
+
+		}
+
+		Set<String> set = new HashSet<String>(list);
+		HashMap<String, Integer> m1 = new HashMap<String, Integer>();
+		for (String temp : set) {
+		//	System.out.println(temp + ": " + Collections.frequency(list, temp));
+			m1.put((String) temp, (int)Collections.frequency(list, temp));
+			
+		}
+
+		TreeMap<String, Integer> sortedMap = sortMapByValue(m1);  
+		System.out.println(sortedMap);
+			
+		FileWriter writer = new FileWriter(
+				"C:\\Users\\manisx\\Documents\\Retrieval\\Apollo Update\\ReliabilityIssue\\output.txt");
+
+		BufferedWriter out = new BufferedWriter(writer);
+		for (Map.Entry<String, Integer> entry : sortedMap.entrySet()) {
+		     System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue()); //this statement prints out my keys and values
+		     out.write("SMI : " + entry.getKey() + "\t\t" + "Error Count :" + entry.getValue() + "\n");
+		     System.out.println("Done");
+		     out.flush();   // Flush the buffer and write all changes to the disk
+		 }
+
+		out.close();    // Close the file
+*/	}
+	public static TreeMap<String, Integer> sortMapByValue(HashMap<String, Integer> map){
+		Comparator<String> comparator = new ValueComparator(map);
+		//TreeMap is a map sorted by its keys. 
+		//The comparator is used to sort the TreeMap by keys. 
+		TreeMap<String, Integer> result = new TreeMap<String, Integer>(comparator);
+		result.putAll(map);
+		return result;
+	}
+}

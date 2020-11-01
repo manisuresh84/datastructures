@@ -1,0 +1,15 @@
+package example;
+
+import javax.xml.bind.annotation.XmlNsForm;
+import javax.xml.bind.annotation.XmlSchema;
+
+public class Packageinfo {
+
+	@XmlSchema( 
+		    namespace = "http://www.example.org/package", 
+		    elementFormDefault = XmlNsForm.QUALIFIED) 
+		package example;
+		 
+
+
+}

@@ -1,0 +1,51 @@
+package com.service.user;
+
+import javax.ws.rs.CookieParam;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.FormParam;
+import javax.ws.rs.GET;
+import javax.ws.rs.HeaderParam;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.QueryParam;
+
+@Path("/user/service")
+public class UserServices {
+
+	@PUT
+	@Path("/create")
+	public void createUser() {
+		System.out.println("Inside createUser Method");
+	}
+
+	@GET
+	@Path("/get/{userid}")
+	public void getUser(@PathParam("userid") String userId, @QueryParam("fname")String firstName, @HeaderParam("Host")String clientName) {
+		System.out.println("Inside getUser Method");
+		System.out.println("User ID :" + userId);
+		System.out.println("First Name :" + firstName);
+		System.out.println("Client Name :" + clientName);
+	}
+
+	@POST
+	@Path("/post")
+	public void updateUser(@FormParam("username")String userName, @FormParam("email")String email, @CookieParam("phone")String phoneNum) {
+		System.out.println("Inside updateUser Method");
+		System.out.println("User Name :" + userName);
+		System.out.println("Email Address :" + email);
+		System.out.println("Mobile :" + phoneNum);
+	}
+
+	@DELETE
+	public void deleteUser() {
+		System.out.println("Inside deleteUser Method");
+	}
+
+	@Path("/special")
+
+	public SpecialUser getSpecialUser() {
+		return new SpecialUser();
+	}
+}

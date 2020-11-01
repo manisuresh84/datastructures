@@ -1,0 +1,108 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
+
+public class ApolloSmiFilter {
+
+	public static void main(String[] args) throws IOException {
+
+		String homeDir = "C:\\Users\\manisx\\Documents\\Retrieval\\Apollo Update\\ReliabilityIssue";
+		// Get all the Source Owner Details into Hashmap, Key is SMI & Value is
+		// Source Owner team name.
+
+		Map<String, String> sourceMap = new HashMap<String, String>();
+		BufferedReader in = new BufferedReader(new FileReader(homeDir + "\\" + "sourceOwners"));
+		String line1 = "";
+		String parts[];
+		while ((line1 = in.readLine()) != null) {
+			parts = line1.split("\t");
+			sourceMap.put(parts[0], parts[1]);
+		}
+		in.close();
+
+		line1 = "";
+		in = new BufferedReader(new FileReader(homeDir + "\\" + "source_definitions"));
+		int i = 0;
+		while((line1 = in.readLine()) !=null ){
+			parts = line1.split("\t");
+			for(int j = 0 ; j < parts.length;j++){
+				System.out.println(parts[j] + " ");
+			}
+		}
+		
+	/*	ArrayList<String> list = new ArrayList<String>();
+		for (String line : Files.readAllLines(Paths.get(
+				"C:\\Users\\manisx\\Documents\\Retrieval\\Apollo Update\\ReliabilityIssue\\10_19\\consolidate.txt"))) {
+
+			int sourcePos = line.indexOf("source:");
+			int attachPos = line.indexOf("attach:");
+
+			if (sourcePos != -1 && attachPos != -1) {
+				list.add(line.substring(sourcePos + 7, attachPos).trim());
+			}
+		}
+
+		Set<String> set = new HashSet<String>(list);
+		HashMap<String, Integer> m1 = new HashMap<String, Integer>();
+		for (String temp : set) {
+			m1.put((String) temp, (int) Collections.frequency(list, temp));
+		}
+
+		TreeMap<String, Integer> sortedMap = sortMapByValue(m1);
+
+		FileWriter writer = new FileWriter(
+				"C:\\Users\\manisx\\Documents\\Retrieval\\Apollo Update\\ReliabilityIssue\\output.txt");
+
+		BufferedWriter out = new BufferedWriter(writer);
+		String sourceOwner = "Not Available";
+		for (Map.Entry<String, Integer> entry : sortedMap.entrySet()) {
+			// System.out.println("Key = " + entry.getKey() + ", Value = " +
+			// entry.getValue()); // this
+			// statement
+			// prints
+			// out
+			// my
+			// keys
+			// and
+			// values
+			if (sourceMap.containsKey(entry.getKey())) {
+				sourceOwner = sourceMap.get(entry.getKey());
+			}
+
+			if (entry.getKey().length() >= 10) {
+				out.write("SMI : " + entry.getKey() + "\t" + "Error Count :" + entry.getValue() + "\t\t"
+						+ " Owner Team : " + sourceOwner + "\n");
+			} else {
+				out.write("SMI : " + entry.getKey() + "\t\t" + "Error Count :" + entry.getValue() + "\t\t"
+						+ " Owner Team : " + sourceOwner + "\n");
+
+			}
+			// System.out.println("Done");
+			out.flush(); // Flush the buffer and write all changes to the disk
+		}
+
+		out.close(); // Close the file
+*/
+	}
+
+	public static TreeMap<String, Integer> sortMapByValue(HashMap<String, Integer> map) {
+		Comparator<String> comparator = new ValueComparator(map);
+		// TreeMap is a map sorted by its keys.
+		// The comparator is used to sort the TreeMap by keys.
+		TreeMap<String, Integer> result = new TreeMap<String, Integer>(comparator);
+		result.putAll(map);
+		return result;
+	}
+}

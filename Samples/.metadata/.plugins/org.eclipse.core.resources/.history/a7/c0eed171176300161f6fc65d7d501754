@@ -1,0 +1,42 @@
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class ApolloSmiFilter {
+
+	public static void main(String[] args) throws IOException {
+
+		ArrayList list = new ArrayList();
+		for (String line : Files.readAllLines(Paths
+				.get("C:\\Users\\manisx\\Documents\\Retrieval\\Apollo Update\\ReliabilityIssue\\Apollologs_1.txt"))) {
+			// System.out.println(line);
+			int sourcePos = line.indexOf("source:");
+			int attachPos = line.indexOf("attach:");
+			list.add(line.substring(sourcePos + 7, attachPos).trim());
+			// System.out.println("DEBUGGER : Line : " + line + "Sub String :" +
+			// line.substring(sourcePos + 7, attachPos).trim());
+			// System.out.println("Source Pos : " + sourcePos + " Attachment Pos
+			// : " + attachPos);
+
+		}
+
+		System.out.println("Size of List :" + list.size());
+
+		FileWriter writer = new FileWriter(
+				"C:\\Users\\manisx\\Documents\\Retrieval\\Apollo Update\\ReliabilityIssue\\output.txt");
+
+		Iterator iterator = list.iterator();
+		while (iterator.hasNext()) {
+			writer.write(iterator.next().toString());
+			writer.write("\n");
+		}
+
+		writer.flush();
+		writer.close();
+
+	}
+
+}

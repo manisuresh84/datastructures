@@ -1,0 +1,7 @@
+suresh 10
+kumar 9
+mani 8
+bhuvee 7
+abcd 6
+efgh 5
+ijkl 4
